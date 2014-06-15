@@ -101,12 +101,12 @@ Or use L<App::riap>, a client shell for Riap:
 This module provides a sample Plack application, which you can customize, to
 export a DBI database as a HTTP API service.
 
-I was reading Yannick's blog entry, http://techblog.babyl.ca/entry/waack ,
-titled "Instant REST API for any databases" and I thought I'd quickly cobble
+I was reading Yannick's blog entry today, http://techblog.babyl.ca/entry/waack ,
+titled I<Instant REST API for Any Databases> and I thought I'd quickly cobble up
 something similar using a different toolbox. Granted, the resulting HTTP API is
-not REST but more RPC-style (L<Riap::HTTP> to be exact) and at 0.01 the API
-functions are somewhat limited (L<DBIx::FunctionalAPI>) but this demonstrates
-how easy it is to create something usable.
+not REST (read: it's better :-) and at 0.01 the API functions are somewhat
+limited (L<DBIx::FunctionalAPI>) but this demonstrates how easy it is to create
+something usable.
 
 The tools and frameworks are: L<DBIx::FunctionalAPI> which provides a set of
 functions: L<list_tables>, L<list_columns>, L<list_rows>, L<create_table>,
