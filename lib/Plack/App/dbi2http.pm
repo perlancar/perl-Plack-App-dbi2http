@@ -101,23 +101,24 @@ Or use L<App::riap>, a client shell for Riap:
 This module provides a sample Plack application, which you can customize, to
 export a DBI database as a HTTP API service.
 
-I was reading Yannick's blog entry today, http://techblog.babyl.ca/entry/waack ,
-titled I<Instant REST API for Any Databases> and I thought I'd quickly cobble up
-something similar using a different toolbox. Granted, the resulting HTTP API is
-not REST (read: it's better :-) and at 0.01 the API functions are somewhat
-limited (L<DBIx::FunctionalAPI>) but this demonstrates how easy it is to create
+I was reading Yannick's blog entry today,
+L<http://techblog.babyl.ca/entry/waack>, titled I<Instant REST API for Any
+Databases> and I thought I'd quickly cobble up something similar using a
+different toolbox. Granted, the resulting HTTP API is not REST (read: it's
+better :-) and at 0.01 the API functions are somewhat limited
+(L<DBIx::FunctionalAPI>) but this demonstrates how easy it is to create
 something usable.
 
 The tools and frameworks are: L<DBIx::FunctionalAPI> which provides a set of
-functions: L<list_tables>, L<list_columns>, L<list_rows>, L<create_table>,
-L<create_row>, L<rename_table>, etc. These are normal Perl functions that accept
+functions: C<list_tables>, C<list_columns>, C<list_rows>, C<create_table>,
+C<create_row>, C<rename_table>, etc. These are normal Perl functions that accept
 C<dbh>, C<table> arguments and so on.
 
 Next we have L<Perinci::Access::HTTP::Server>, a set of L<Plack> middlewares
 that let you access Perl functions over HTTP using the L<Riap::HTTP> protocol.
-We compose the middlewares in a PSGI application called <dbi2http.psgi>.
+We compose the middlewares in a PSGI application called C<dbi2http.psgi>.
 
-All you now need to do is just run the PSGI application with L<Plack>, using one
+All you need to do now is just run the PSGI application with L<Plack>, using one
 of the many available PSGI servers. There is a configuration file required, to
 be put in the home directory, and can be copied from the provided sample config.
 All you need to set is basically just path to log file and the DBI connection
@@ -125,8 +126,8 @@ information (db_dsn, db_user, db_password) and you're good to go.
 
 After the PSGI application is running, you can connect using a plain HTTP client
 like B<curl>. Riap::HTTP exposes Perl modules and functions directly as URL
-paths, and it's very self-discoverable. For example, you can just request the
-root URL first, and a help message is returned:
+paths. For example, you can just request the root URL first, and a help message
+is returned:
 
  % curl http://localhost:5000/
  function        list_columns
@@ -246,13 +247,13 @@ Let's check the metadata of another function:
    }
  ]
 
-We can see from the above that the C<list_columns> function accept arguments
+We can see from the above that the C<list_columns> function accepts arguments
 C<table> (a string, required) and C<detail> (bool).
 
 For the full specification of the metadata format, see L<Rinci>.
 
 Aside from using a low-level HTTP client, we can also use L<App::riap>, a Riap
-client (just to note that Riap can also be accessed transport protocol other
+client (just to note that Riap can also be accessed via transport protocol other
 than HTTP, but it's another subject matter). The client is a command-line shell
 which some conveniences like filesystem-like browsing of API tree, tab
 completion, debugging, command history, and others. Let's install the client and
