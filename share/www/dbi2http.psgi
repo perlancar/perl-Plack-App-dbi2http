@@ -13,8 +13,11 @@ use Plack::Builder;
 use Plack::Util::PeriAHS qw(errpage);
 use YAML::Syck ();
 
-my $home = (getpwuid($>))[7];  # $ENV{HOME} is empty if via fcgi
-my $conf = YAML::Syck::LoadFile("$home/dbi2http.conf.yaml");
+my $confpath = $ENV{DBI2HTTP_CONFIG_PATH} // do {
+    my $home = (getpwuid($>))[7];  # $ENV{HOME} is empty if via fcgi
+    "$home/dbi2http.conf.yaml";
+};
+my $conf = YAML::Syck::LoadFile($confpath);
 
 my $fwr = File::Write::Rotate->new(
     dir       => $conf->{riap_access_log_dir},
@@ -64,3 +67,11 @@ my $app = builder {
 
 =head1 SYNOPSIS
 
+
+=head1 ENVIRONMENT
+
+=head2 DBI2HTTP_CONFIG_PATH => str
+
+Set location of config file. The default is C<~/dbi2http.conf.yaml>.
+
+=cut
