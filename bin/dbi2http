@@ -1,0 +1,79 @@
+#!/usr/bin/perl
+
+use 5.010;
+use strict;
+use warnings;
+
+# DATE
+# VERSION
+
+use File::ShareDir qw(dist_file);
+use File::Temp qw(tempfile);
+use Getopt::Long qw(:config pass_through no_permute);
+use Pod::Usage;
+use YAML::Syck qw(DumpFile);
+
+my %Opts;
+
+GetOptions(
+    'user' => \$Opts{user},
+    'pass' => \$Opts{pass},
+    'help' => sub { pod2usage(0) },
+);
+
+die "Please supply DBI dsn to export\n" unless @ARGV;
+my $dsn = shift @ARGV;
+
+my (undef, $confpath) = tempfile();
+DumpFile($confpath, {
+    riap_access_log_dir => $ENV{HOME},
+    riap_access_log_prefix => "dbi2http-riap_access.log",
+    #riap_access_log_size => 10485760,
+    #riap_access_log_histories => 10,
+    db_dsn => $dsn,
+    db_user => $Opts{user},
+    db_password => $Opts{pass},
+});
+
+$ENV{DBI2HTTP_CONFIG_PATH} = $confpath;
+exec "plackup",
+    dist_file("Plack-App-dbi2http", "www/dbi2http.psgi"),
+    @ARGV;
+
+# ABSTRACT: Export DBI database as HTTP API (Riap::HTTP)
+# PODNAME: dbi2http
+
+=head1 SYNOPSIS
+
+ % dbi2http dbi:SQLite:dbname=/path/to/your.db
+
+ % dbi2http dbi:mysql:database=foo --user alice --pass secret
+
+ % dbi2http --help
+
+
+=head1 DESCRIPTION
+
+This is a one-liner shortcut to export your DBI database as HTTP API (using
+Riap::HTTP protocol).
+
+
+=head1 USAGE
+
+ % dbi2http [options] <DBI dsn>
+
+
+=head1 OPTIONS
+
+All other options will be passed to B<plackup>.
+
+=head2 --user => str
+
+=head2 --pass => str
+
+
+=head1 SEE ALSO
+
+L<Plack::App::dbi2http>
+
+=cut
