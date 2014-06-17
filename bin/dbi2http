@@ -35,18 +35,29 @@ DumpFile($confpath, {
 });
 
 $ENV{DBI2HTTP_CONFIG_PATH} = $confpath;
-exec "plackup",
-    dist_file("Plack-App-dbi2http", "www/dbi2http.psgi"),
-    @ARGV;
+my @cmd = ("plackup", dist_file("Plack-App-dbi2http", "www/dbi2http.psgi"),
+    @ARGV);
+#say "D:cmd=", join(" ", @cmd);
+exec @cmd;
 
 # ABSTRACT: Export DBI database as HTTP API (Riap::HTTP)
 # PODNAME: dbi2http
 
 =head1 SYNOPSIS
 
+Simplest usage:
+
  % dbi2http dbi:SQLite:dbname=/path/to/your.db
 
- % dbi2http dbi:mysql:database=foo --user alice --pass secret
+Specify DBI user and password:
+
+ % dbi2http dbi:mysql:database=foo --user dbuser --pass dbpass
+
+Unknown options will be passed to plackup:
+
+ % dbi2http dbi:mysql:test --user dbuser --pass dbpass --port 5001 -s Starman
+
+See other options:
 
  % dbi2http --help
 
@@ -64,7 +75,7 @@ Riap::HTTP protocol).
 
 =head1 OPTIONS
 
-All other options will be passed to B<plackup>.
+Unknown options will be passed to B<plackup>.
 
 =head2 --user => str
 
