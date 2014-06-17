@@ -9,8 +9,7 @@ use warnings;
 
 use File::ShareDir qw(dist_file);
 use File::Temp qw(tempfile);
-use Getopt::Long qw(:config pass_through no_permute);
-use Pod::Usage;
+use Getopt::Long qw(:config pass_through no_permute auto_help auto_version);
 use YAML::Syck qw(DumpFile);
 
 my %Opts;
@@ -18,12 +17,6 @@ my %Opts;
 GetOptions(
     'user' => \$Opts{user},
     'pass' => \$Opts{pass},
-    'help|h|?' => sub { pod2usage(0) },
-    'version|v' => sub {
-        no warnings;
-        say "dbi2http version $main::VERSION";
-        exit 0;
-    },
 );
 
 die "Please supply DBI dsn to export\n" unless @ARGV;
