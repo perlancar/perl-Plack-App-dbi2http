@@ -69,7 +69,11 @@ All other options will be passed to B<plackup>.
 
 =head2 --user => str
 
+Supply DBI username. Some driver do not need it (e.g. SQLite).
+
 =head2 --pass => str
+
+Supply DBI password. Some driver do not need it (e.g. SQLite).
 
 
 =head1 SEE ALSO
