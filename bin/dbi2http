@@ -38,7 +38,11 @@ $ENV{DBI2HTTP_CONFIG_PATH} = $confpath;
 my @cmd = ("plackup", dist_file("Plack-App-dbi2http", "www/dbi2http.psgi"),
     @ARGV);
 #say "D:cmd=", join(" ", @cmd);
-exec @cmd;
+system @cmd;
+my $exit = $?;
+
+unlink $confpath;
+exit $exit;
 
 # ABSTRACT: Export DBI database as HTTP API (Riap::HTTP)
 # PODNAME: dbi2http
