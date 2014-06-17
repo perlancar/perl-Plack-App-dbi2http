@@ -9,20 +9,21 @@ use warnings;
 
 use File::ShareDir qw(dist_file);
 use File::Temp qw(tempfile);
-use Getopt::Long qw(:config pass_through no_permute auto_help auto_version);
+use Getopt::Long qw(:config pass_through auto_help auto_version);
 use YAML::Syck qw(DumpFile);
 
 my %Opts;
 
 GetOptions(
-    'user' => \$Opts{user},
-    'pass' => \$Opts{pass},
+    'user=s' => \$Opts{user},
+    'pass=s' => \$Opts{pass},
 );
 
 die "Please supply DBI dsn to export\n" unless @ARGV;
 my $dsn = shift @ARGV;
 
 my (undef, $confpath) = tempfile();
+#say "D:confpath=$confpath";
 DumpFile($confpath, {
     riap_access_log_dir => $ENV{HOME},
     riap_access_log_prefix => "dbi2http-riap_access.log",
