@@ -18,7 +18,12 @@ my %Opts;
 GetOptions(
     'user' => \$Opts{user},
     'pass' => \$Opts{pass},
-    'help' => sub { pod2usage(0) },
+    'help|h|?' => sub { pod2usage(0) },
+    'version|v' => sub {
+        no warnings;
+        say "dbi2http version $main::VERSION";
+        exit 0;
+    },
 );
 
 die "Please supply DBI dsn to export\n" unless @ARGV;
