@@ -1,5 +1,11 @@
 Revision history for Plack-App-dbi2http
 
+0.04     2014-06-17 (SHARYANTO)
+
+         - bin/dbi2http: Some small tweaks and fixes (remove generated config
+           file at the end, fix Getopt spec).
+
+
 0.03     2014-06-17 (SHARYANTO)
 
          - No functional changes.
