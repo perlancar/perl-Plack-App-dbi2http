@@ -23,7 +23,7 @@ Run service:
  % plackup dbi2http.psgi
  HTTP::Server::PSGI: Accepting connections at http://0:5000/
 
-Access HTTP API via, e.g. curl:
+From another console, access HTTP API via, e.g. curl:
 
  % curl http://localhost:5000/list_tables
  countries
@@ -79,7 +79,8 @@ Access HTTP API via, e.g. curl:
  | United States of America   us   Amerika Serikat                 |
  `-----------------------------------------------------------------'
 
-Or use L<App::riap>, a client shell for Riap:
+Or use L<App::riap>, a client shell for Riap (with filesystem-like API browsing
+and shell tab completion):
 
  % riap http://localhost:5000/
  riap /> ls
