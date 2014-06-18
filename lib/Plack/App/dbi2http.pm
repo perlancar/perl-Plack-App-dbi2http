@@ -102,7 +102,7 @@ and shell tab completion):
 This module provides a sample Plack application, which you can customize, to
 export a DBI database as a HTTP API service.
 
-I was reading Yannick's blog entry today,
+I was reading Yanick's blog entry today,
 L<http://techblog.babyl.ca/entry/waack>, titled I<Instant REST API for Any
 Databases> and I thought I'd quickly cobble up something similar using a
 different toolbox. Granted, the resulting HTTP API is not REST (read: it's
