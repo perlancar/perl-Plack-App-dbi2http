@@ -307,6 +307,9 @@ client performs a C<meta> request and converts it to a formatted help message).
 To add HTTP authentication (or do any other customization), you can just add a
 Plack middleware to the PSGI application.
 
+Last word, exporting a database as a public API service is usually B<not a good
+idea>. In case you don't realize that ;-)
+
 
 =head1 SEE ALSO
 
