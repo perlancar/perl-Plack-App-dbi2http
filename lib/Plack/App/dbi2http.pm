@@ -256,7 +256,7 @@ For the full specification of the metadata format, see L<Rinci>.
 Aside from using a low-level HTTP client, we can also use L<App::riap>, a Riap
 client (just to note that Riap can also be accessed via transport protocol other
 than HTTP, but it's another subject matter). The client is a command-line shell
-which some conveniences like filesystem-like browsing of API tree, tab
+with some conveniences like filesystem-like browsing of API tree, tab
 completion, debugging, command history, and others. Let's install the client and
 try it out:
 
