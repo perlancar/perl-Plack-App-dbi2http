@@ -45,7 +45,7 @@ unlink $confpath;
 exit $exit;
 
 # ABSTRACT: Export DBI database as HTTP API (Riap::HTTP)
-# PODNAME: dbi2http
+# PODNAME:
 
 =head1 SYNOPSIS
 
