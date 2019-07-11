@@ -1,11 +1,11 @@
-0.07    2017-07-11 (PERLANCAR)
+0.07    2017-07-11  Released-By: PERLANCAR
 
 	- No functional changes.
 
 	- Remove dependency to File::Slurp::Tiny.
 
 
-0.06    2015-09-06 (PERLANCAR)
+0.06    2015-09-06  Released-By: PERLANCAR
 
 	- No functional changes.
 
@@ -14,31 +14,31 @@
 	  requirement.
 
 
-0.05     2014-06-18 (SHARYANTO)
+0.05     2014-06-18  Released-By: SHARYANTO
 
          - No functional changes. Fix typos and expand Synopsis.
 
 
-0.04     2014-06-17 (SHARYANTO)
+0.04     2014-06-17  Released-By: SHARYANTO
 
          - bin/dbi2http: Some small tweaks and fixes (remove generated config
            file at the end, fix Getopt spec).
 
 
-0.03     2014-06-17 (SHARYANTO)
+0.03     2014-06-17  Released-By: SHARYANTO
 
          - No functional changes.
 
          - bin/dbi2http: Add --version.
 
 
-0.02     2014-06-16 (SHARYANTO)
+0.02     2014-06-16  Released-By: SHARYANTO
 
          - Add command-line script 'bin/dbi2http'.
 
          - Several fixes (typos, filename).
 
 
-0.01     2014-06-15 (SHARYANTO)
+0.01     2014-06-15  Released-By: SHARYANTO
 
          - First release.
